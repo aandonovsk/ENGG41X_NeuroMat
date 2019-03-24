@@ -1,0 +1,221 @@
+﻿<Window x:Class="NeuroMat_Application.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NeuroMat_Application.Views"
+        xmlns:ViewModel="clr-namespace:NeuroMat_Application.ViewModel"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        d:DataContext='{Binding Source={d:DesignInstance Type={x:Type ViewModel:MainViewModel}}}'
+        mc:Ignorable="d"
+        Title="NeuroMat Application - Version: 0.1.0.0"
+        WindowStartupLocation='CenterScreen'
+        WindowState='Maximized'>
+  <Window.Resources>
+    <local:NumberToBrushConverter x:Key="NumberToBrushConverter" />
+  </Window.Resources>
+
+  <Grid x:Name='GridStructure'
+        Background='Gray'>
+    <Grid.RowDefinitions>
+      <RowDefinition Height='5' />
+      <RowDefinition Height='Auto' />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width='*' />
+    </Grid.ColumnDefinitions>
+
+    <TabControl Name='TabControl'
+                Grid.Row='1'
+                Background='WhiteSmoke'
+                Grid.RowSpan='2'>
+
+      <TabItem Name='PatientDataTab'
+               Header='Patient Info'
+               FocusManager.FocusedElement='{Binding ElementName=PatientTabGrid}'>
+        <Grid x:Name='PatientTabGrid'>
+
+        </Grid>
+      </TabItem>
+
+      <TabItem Name='Testing'
+               Header='Testing'
+               FocusManager.FocusedElement='{Binding ElementName=TestingTabGrid}'
+               Height='22'
+               VerticalAlignment='Bottom'>
+
+        <Grid x:Name='TestingTabGrid'>
+          <Grid.RowDefinitions>
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='*' />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='*' />
+            <ColumnDefinition Width='*' />
+          </Grid.ColumnDefinitions>
+
+          <TextBlock Grid.Column='0'
+                     Grid.Row='0'
+                     Text='Pressure Sensor Data'
+                     HorizontalAlignment='Center'
+                     VerticalAlignment='Center'
+                     FontWeight='Bold' />
+
+          <Grid x:Name='PressureMatSensorData'
+                Grid.Column='0'
+                Grid.Row='2'
+                Margin='20,0,20,20'
+                Background='Black'>
+
+            <DataGrid x:Name='PressureSensorDataGrid'
+                      Margin='5,1,5,9'
+                      AutoGenerateColumns='False'
+                      CanUserResizeColumns='False'
+                      CanUserSortColumns='False'
+                      ItemsSource='{Binding FilteredPressureSensorVoltageValues}'
+                      MinRowHeight='69'
+                      CanUserResizeRows='False'
+                      CanUserDeleteRows='False'
+                      CanUserAddRows='False'
+                      AreRowDetailsFrozen='True'
+                      IsReadOnly='False'>
+
+              <DataGrid.Columns>
+                <DataGridTextColumn Width='*'
+                                    Binding='{Binding SelectedRow}'
+                                    TextBlock.FontWeight='Bold'
+                                    TextBlock.TextAlignment='Center'>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header='A'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[0]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[0],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header='B'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[1]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[1],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='C'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[2]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[2],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='D'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[3]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[3],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='E'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[4]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[4],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='F'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[5]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[5],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='G'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[6]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[6],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='H'
+                                    Width='*'
+                                    Binding='{Binding PressureSensorData[7]}'>
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
+                              Value='{Binding PressureSensorData[7],Converter= {StaticResource NumberToBrushConverter}}' />
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+              </DataGrid.Columns>
+            </DataGrid>
+          </Grid>
+          <Button Content='Test NeuroMat'
+                  HorizontalAlignment='Left'
+                  VerticalAlignment='Top'
+                  Width='110'
+                  Height='65' 
+                  Grid.Column='1'
+                  Grid.Row='1'
+                  Command='{Binding TestArduinoCode}'>
+          </Button>
+          <Button Content='Test Dummy NeuroMat'
+                  HorizontalAlignment='Left'
+                  VerticalAlignment='Top'
+                  Width='110'
+                  Height='65'
+                  Grid.Column='1'
+                  Grid.Row='1'
+                  Command='{Binding TestDummyArduinoCode}'
+                  Margin='0,102,0,0'>
+          </Button>
+
+        </Grid>
+      </TabItem>
+
+      <TabItem Name='TestResults'
+               Header='Test Results'
+               FocusManager.FocusedElement='{Binding ElementName=ResultsTabGrid}'>
+        <Grid x:Name='ResultsTabGrid'>
+          <Grid.ColumnDefinitions>
+
+          </Grid.ColumnDefinitions>
+        </Grid>
+      </TabItem>
+
+      <TabItem Name='PatientHistory'
+               Header='Patient History '
+               FocusManager.FocusedElement='{Binding ElementName=HistoryTabGrid}'>
+        <Grid x:Name='HistoryTabGrid'>
+        </Grid>
+      </TabItem>
+
+    </TabControl>
+
+  </Grid>
+</Window>
+ 
