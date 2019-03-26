@@ -27,3 +27,32 @@ C:\School\ENGG4100\Final Software Design\NeuroMatApplication\NeuroMat_Applicatio
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.exe
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.pdb
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\NeuroMat_Application\NeuroMat_Application\bin\Debug\IntelHexFormatReader.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.exe.config
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.exe
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.pdb
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoUploader.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\IntelHexFormatReader.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\NLog.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.pdb
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.dll.config
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\NLog.xml
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csprojAssemblyReference.cache
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\Views\MainWindow.g.cs
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\App.g.cs
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application_MarkupCompile.cache
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application_MarkupCompile.lref
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\App.baml
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\Views\MainWindow.baml
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.g.resources
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.Properties.Resources.resources
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.GenerateResource.cache
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.CoreCompileInputs.cache
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.CopyComplete
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.exe
+C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.pdb

@@ -48,3 +48,20 @@ C:\School\ENGG4100\Final Software Design\NeuroMatApplication\ArduinoDriver\obj\D
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CopyComplete
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\ArduinoDriver\obj\Debug\ArduinoDriver.dll
 C:\School\ENGG4100\Final Software Design\NeuroMatApplication\ArduinoDriver\obj\Debug\ArduinoDriver.pdb
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\ArduinoDriver.dll.config
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\ArduinoDriver.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\ArduinoDriver.pdb
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\ArduinoUploader.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\IntelHexFormatReader.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\NLog.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\NLog.xml
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.pdb
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.xml
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csprojAssemblyReference.cache
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.Properties.Resources.resources
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.GenerateResource.cache
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CoreCompileInputs.cache
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CopyComplete
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.dll
+C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.pdb

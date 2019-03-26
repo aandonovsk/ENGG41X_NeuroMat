@@ -22,5 +22,16 @@ namespace NeuroMat_Application.Views
             ViewModel = new MainViewModel();
             DataContext = ViewModel;
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }

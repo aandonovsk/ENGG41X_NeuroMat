@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NeuroMat_Application.Commands;
 using NeuroMat_Application.Model;
+using System.IO;
 
 namespace NeuroMat_Application.ViewModel
 {
@@ -19,10 +20,14 @@ namespace NeuroMat_Application.ViewModel
         public double[][] PressureSensorCalibrationSlopes { get; private set; }
         public double[][] PressureSensorCalibrationBias { get; private set; }
         public ObservableCollection<PressureSensorRowDataTemplate> FilteredPressureSensorVoltageValues { get; private set; }
+        public ObservableCollection<PatientDataTemplate> PatientDataList { get; private set; }
 
         private int NumberOfAveragedPressureSensorSamples = 2;
         private int PressSensVoltDividerResistance = 47000;
         private int PressureSensorInputVoltage = 5;
+
+        public Command newpat { get; private set; }
+        public Command loadpat { get; private set; }
 
 
         public MainViewModel() // Constructor
@@ -30,10 +35,69 @@ namespace NeuroMat_Application.ViewModel
             TestArduinoCode = new Command(TestArduinoCodeMethod, () => true);
             TestDummyArduinoCode = new Command(TestDummyArduinoCodeMethod, () => true);
             FilteredPressureSensorVoltageValues = new ObservableCollection<PressureSensorRowDataTemplate>();
+            PatientDataList = new ObservableCollection<PatientDataTemplate>();
             GenerateDefaultPressureSensorValues();
             ReadPressureSensorCalibrationDataFromTextFiles();
+
+            newpat = new Command(newpatMethod, () => true);
+            loadpat = new Command(loadpatMethod, () => true);
+
         }
 
+        private void loadpatMethod(object parameter) //Method load in all patient data from text file
+        {
+            //Read from textfile
+            {   // Open the text file using a stream reader.
+                string docPath =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                int lineCount = File.ReadLines(Path.Combine(docPath, "41X Patient Data.txt")).Count();
+
+                using (StreamReader sr = new StreamReader(Path.Combine(docPath, "41X Patient Data.txt"), true))
+                {
+                    // Read the stream to a string, and write the string to the console.
+                    for (int i = 0; i < lineCount; i++)
+                    {
+                        String line = sr.ReadLine();
+                        string[] words = line.Split(';');
+                        PatientDataTemplate patientDataTemplate = new PatientDataTemplate() { Name = words[0], ID = words[1], Birth = words[2], Age = words[3], Height = words[4] };
+                        PatientDataList.Add(patientDataTemplate);
+                    }
+
+                }
+            }
+        }
+
+        private void newpatMethod(object parameter) //Method creates a new patient
+        {
+
+
+            //Write to textfile and append to text file
+            // Create a string array with the lines of text
+
+            //string[] lines = { Name, IDstring, Birth, Agestring, Heightstring };
+
+            // Set a variable to the Documents path.
+            string docPath =
+              Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            // Write the string array to a new file named "WriteLines.txt".
+            //using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "41X Patient Data.txt")))
+            //{
+            //    foreach (string line in lines)
+            //        outputFile.WriteLine(line);
+            //}
+
+            // Append text to an existing file named "WriteLines.txt".
+            //using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "41X Patient Data.txt"), true))
+            //{
+            //    string[] lines = { Name,";", IDstring,";", Birth,";", Agestring,";", Heightstring };
+             //   outputFile.WriteLine(lines);
+            //}
+
+
+
+        }
         private void TestArduinoCodeMethod(object parameter)
         {
             PressureSensorArduinoControl = new PressureSensorArduinoControl(NumberOfAveragedPressureSensorSamples);
@@ -43,6 +107,7 @@ namespace NeuroMat_Application.ViewModel
             //GeneratePressureSensorObject(filteredPressureSensorForceValues);
             GeneratePressureSensorObject(pressureSensorForceValues);
         }
+
 
         private void TestDummyArduinoCodeMethod(object parameter)
         {

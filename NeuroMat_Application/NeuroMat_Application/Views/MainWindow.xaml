@@ -11,65 +11,94 @@
         Title="NeuroMat Application - Version: 0.1.0.0"
         WindowStartupLocation='CenterScreen'
         WindowState='Maximized'>
-  <Window.Resources>
-    <local:NumberToBrushConverter x:Key="NumberToBrushConverter" />
-  </Window.Resources>
+    <Window.Resources>
+        <local:NumberToBrushConverter x:Key="NumberToBrushConverter" />
+    </Window.Resources>
 
-  <Grid x:Name='GridStructure'
+    <Grid x:Name='GridStructure'
         Background='Gray'>
-    <Grid.RowDefinitions>
-      <RowDefinition Height='5' />
-      <RowDefinition Height='Auto' />
-      <RowDefinition />
-    </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height='5' />
+            <RowDefinition Height='Auto' />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width='*' />
-    </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-    <TabControl Name='TabControl'
+        <TabControl Name='TabControl'
                 Grid.Row='1'
                 Background='WhiteSmoke'
-                Grid.RowSpan='2'>
+                Grid.RowSpan='2' SelectionChanged="TabControl_SelectionChanged_1">
 
-      <TabItem Name='PatientDataTab'
+            <TabItem Name='PatientDataTab'
                Header='Patient Info'
                FocusManager.FocusedElement='{Binding ElementName=PatientTabGrid}'>
-        <Grid x:Name='PatientTabGrid'>
+                <Grid x:Name='PatientTabGrid'>
+                    <ListView x:Name="Patient_Data" ItemsSource="{Binding PatientDataList}" Margin="10,49,0,0" Height="197" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500">
+                        <ListView.View>
+                            <GridView x:Name="Gridview1">
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="100"/>
+                                <GridViewColumn Header="Patient Number" DisplayMemberBinding="{Binding Path=ID}" Width="100"/>
+                                <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding Path=Birth}" Width="100"/>
+                                <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Path=Age}" Width="100"/>
+                                <GridViewColumn Header="Height" DisplayMemberBinding="{Binding Path=Height}" Width="100"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Rectangle Fill="Gray" Stroke="Gray" StrokeThickness="3" RenderTransformOrigin="0.503,0.512" Margin="10,265,10.2,0" Height="31" VerticalAlignment="Top" />
+                    <Label Content="Existing Patients" HorizontalAlignment="Left" Margin="10,10,0,0" Width="127" FontSize="16" Height="31" VerticalAlignment="Top"/>
+                    <Label Content="New Patient" HorizontalAlignment="Left" Margin="10,301,0,0" Width="127" FontSize="16" Height="31" VerticalAlignment="Top"/>
+                    <TextBox Margin="111,337,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
+                    <TextBox Margin="111,374,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="168"/>
+                    <TextBox Margin="111,419,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
+                    <Button Content='Create Patient'
+                         VerticalAlignment='Top'
+                         Height='65'
+                         Command='{Binding newpat}' Margin="329,355,0,0" HorizontalAlignment="Left" Width="110"/>
+                    <Button Content='Load Patient Data'
+                        HorizontalAlignment='Left'
+                        VerticalAlignment='Top'
+                        Width='110'
+                        Height='65'
+                        Command='{Binding loadpat}' Margin="545,113,0,0"/>
+                    <Label Content="Name:" HorizontalAlignment="Left" Margin="24,337,0,0" Width="45" Height="23" VerticalAlignment="Top"/>
+                    <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="24,374,0,0" Width="113" Height="23" VerticalAlignment="Top"/>
+                    <Label Content="Height (cm):" HorizontalAlignment="Left" Margin="24,419,0,0" Width="113" Height="23" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
 
-        </Grid>
-      </TabItem>
-
-      <TabItem Name='Testing'
+            <TabItem Name='Testing'
                Header='Testing'
                FocusManager.FocusedElement='{Binding ElementName=TestingTabGrid}'
                Height='22'
                VerticalAlignment='Bottom'>
 
-        <Grid x:Name='TestingTabGrid'>
-          <Grid.RowDefinitions>
-            <RowDefinition Height='Auto' />
-            <RowDefinition Height='*' />
-          </Grid.RowDefinitions>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width='*' />
-            <ColumnDefinition Width='*' />
-          </Grid.ColumnDefinitions>
+                <Grid x:Name='TestingTabGrid'>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height='Auto' />
+                        <RowDefinition Height='*' />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width='*' />
+                        <ColumnDefinition Width='*' />
+                    </Grid.ColumnDefinitions>
 
-          <TextBlock Grid.Column='0'
+                    <TextBlock Grid.Column='0'
                      Grid.Row='0'
                      Text='Pressure Sensor Data'
                      HorizontalAlignment='Center'
                      VerticalAlignment='Center'
                      FontWeight='Bold' />
 
-          <Grid x:Name='PressureMatSensorData'
+                    <Grid x:Name='PressureMatSensorData'
                 Grid.Column='0'
                 Grid.Row='2'
                 Margin='20,0,20,20'
                 Background='Black'>
 
-            <DataGrid x:Name='PressureSensorDataGrid'
+                        <DataGrid x:Name='PressureSensorDataGrid'
                       Margin='5,1,5,9'
                       AutoGenerateColumns='False'
                       CanUserResizeColumns='False'
@@ -82,99 +111,99 @@
                       AreRowDetailsFrozen='True'
                       IsReadOnly='False'>
 
-              <DataGrid.Columns>
-                <DataGridTextColumn Width='*'
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width='*'
                                     Binding='{Binding SelectedRow}'
                                     TextBlock.FontWeight='Bold'
                                     TextBlock.TextAlignment='Center'>
-                </DataGridTextColumn>
+                                </DataGridTextColumn>
 
-                <DataGridTextColumn Header='A'
+                                <DataGridTextColumn Header='A'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[0]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[0],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
 
-                </DataGridTextColumn>
+                                </DataGridTextColumn>
 
-                <DataGridTextColumn Header='B'
+                                <DataGridTextColumn Header='B'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[1]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[1],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='C'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='C'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[2]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[2],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='D'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='D'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[3]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[3],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='E'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='E'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[4]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[4],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='F'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='F'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[5]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[5],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='G'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='G'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[6]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[6],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header='H'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header='H'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[7]}'>
-                  <DataGridTextColumn.ElementStyle>
-                    <Style TargetType='{x:Type TextBlock}'>
-                      <Setter Property='Background'
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType='{x:Type TextBlock}'>
+                                            <Setter Property='Background'
                               Value='{Binding PressureSensorData[7],Converter= {StaticResource NumberToBrushConverter}}' />
-                    </Style>
-                  </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-              </DataGrid.Columns>
-            </DataGrid>
-          </Grid>
-          <Button Content='Test NeuroMat'
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Button Content='Test NeuroMat'
                   HorizontalAlignment='Left'
                   VerticalAlignment='Top'
                   Width='110'
@@ -182,8 +211,8 @@
                   Grid.Column='1'
                   Grid.Row='1'
                   Command='{Binding TestArduinoCode}'>
-          </Button>
-          <Button Content='Test Dummy NeuroMat'
+                    </Button>
+                    <Button Content='Test Dummy NeuroMat'
                   HorizontalAlignment='Left'
                   VerticalAlignment='Top'
                   Width='110'
@@ -192,30 +221,31 @@
                   Grid.Row='1'
                   Command='{Binding TestDummyArduinoCode}'
                   Margin='0,102,0,0'>
-          </Button>
+                    </Button>
 
-        </Grid>
-      </TabItem>
+                </Grid>
+            </TabItem>
 
-      <TabItem Name='TestResults'
+            <TabItem Name='TestResults'
                Header='Test Results'
                FocusManager.FocusedElement='{Binding ElementName=ResultsTabGrid}'>
-        <Grid x:Name='ResultsTabGrid'>
-          <Grid.ColumnDefinitions>
+                <Grid x:Name='ResultsTabGrid'>
+                    <Grid.ColumnDefinitions>
 
-          </Grid.ColumnDefinitions>
-        </Grid>
-      </TabItem>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
 
-      <TabItem Name='PatientHistory'
+            <TabItem Name='PatientHistory'
                Header='Patient History '
                FocusManager.FocusedElement='{Binding ElementName=HistoryTabGrid}'>
-        <Grid x:Name='HistoryTabGrid'>
-        </Grid>
-      </TabItem>
+                <Grid x:Name='HistoryTabGrid'>
+                </Grid>
+            </TabItem>
 
-    </TabControl>
 
-  </Grid>
+        </TabControl>
+
+    </Grid>
 </Window>
  
