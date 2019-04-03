@@ -8,244 +8,1206 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         d:DataContext='{Binding Source={d:DesignInstance Type={x:Type ViewModel:MainViewModel}}}'
         mc:Ignorable="d"
-        Title="NeuroMat Application - Version: 0.1.0.0"
+        Title="NeuroMat Application - Version: 1.0.0.0"
         WindowStartupLocation='CenterScreen'
         WindowState='Maximized'>
-    <Window.Resources>
-        <local:NumberToBrushConverter x:Key="NumberToBrushConverter" />
-    </Window.Resources>
+  <Window.Resources>
+    <local:NumberToBrushConverter x:Key="NumberToBrushConverter" />
+  </Window.Resources>
 
-    <Grid x:Name='GridStructure'
-        Background='Gray'>
-        <Grid.RowDefinitions>
-            <RowDefinition Height='5' />
-            <RowDefinition Height='Auto' />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+  <Grid x:Name='GridStructure'
+        Background='DarkSlateBlue'>
+    <Grid.RowDefinitions>
+      <RowDefinition Height='5' />
+      <RowDefinition Height='Auto' />
+      <RowDefinition />
+    </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
 
-        <TabControl Name='TabControl'
+    <TabControl Name='TabControl'
                 Grid.Row='1'
                 Background='WhiteSmoke'
-                Grid.RowSpan='2' SelectionChanged="TabControl_SelectionChanged_1">
+                Grid.RowSpan='2'>
 
-            <TabItem Name='PatientDataTab'
+      <TabItem x:Name='PatientDataTab'
                Header='Patient Info'
                FocusManager.FocusedElement='{Binding ElementName=PatientTabGrid}'>
-                <Grid x:Name='PatientTabGrid'>
-                    <ListView x:Name="Patient_Data" ItemsSource="{Binding PatientDataList}" Margin="10,49,0,0" Height="197" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500">
-                        <ListView.View>
-                            <GridView x:Name="Gridview1">
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="100"/>
-                                <GridViewColumn Header="Patient Number" DisplayMemberBinding="{Binding Path=ID}" Width="100"/>
-                                <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding Path=Birth}" Width="100"/>
-                                <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Path=Age}" Width="100"/>
-                                <GridViewColumn Header="Height" DisplayMemberBinding="{Binding Path=Height}" Width="100"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Rectangle Fill="Gray" Stroke="Gray" StrokeThickness="3" RenderTransformOrigin="0.503,0.512" Margin="10,265,10.2,0" Height="31" VerticalAlignment="Top" />
-                    <Label Content="Existing Patients" HorizontalAlignment="Left" Margin="10,10,0,0" Width="127" FontSize="16" Height="31" VerticalAlignment="Top"/>
-                    <Label Content="New Patient" HorizontalAlignment="Left" Margin="10,301,0,0" Width="127" FontSize="16" Height="31" VerticalAlignment="Top"/>
-                    <TextBox Margin="111,337,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
-                    <TextBox Margin="111,374,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="168"/>
-                    <TextBox Margin="111,419,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="127"/>
-                    <Button Content='Create Patient'
-                         VerticalAlignment='Top'
-                         Height='65'
-                         Command='{Binding newpat}' Margin="329,355,0,0" HorizontalAlignment="Left" Width="110"/>
-                    <Button Content='Load Patient Data'
-                        HorizontalAlignment='Left'
-                        VerticalAlignment='Top'
-                        Width='110'
-                        Height='65'
-                        Command='{Binding loadpat}' Margin="545,113,0,0"/>
-                    <Label Content="Name:" HorizontalAlignment="Left" Margin="24,337,0,0" Width="45" Height="23" VerticalAlignment="Top"/>
-                    <Label Content="Date of Birth:" HorizontalAlignment="Left" Margin="24,374,0,0" Width="113" Height="23" VerticalAlignment="Top"/>
-                    <Label Content="Height (cm):" HorizontalAlignment="Left" Margin="24,419,0,0" Width="113" Height="23" VerticalAlignment="Top"/>
-                </Grid>
-            </TabItem>
+        <Grid x:Name='PatientTabGrid'>
+          <DataGrid x:Name="Patient_Data"
+                    ItemsSource="{Binding PatientDataList}"
+                    Margin="10,59,0,0"
+                    Height="197"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Width="500"
+                    SelectedItem='{Binding SelectedPatient}'
+                    SelectionMode='Single'
+                    Grid.IsSharedSizeScope='True'
+                    AutoGenerateColumns='False'
+                    CanUserAddRows='False'
+                    CanUserReorderColumns='False'
+                    CanUserDeleteRows='False'
+                    CanUserResizeRows='False'
+                    RowHeaderWidth='0'>
 
-            <TabItem Name='Testing'
+            <DataGrid.ItemContainerStyle>
+              <Style TargetType="DataGridRow">
+                <Style.Triggers>
+                  <Trigger Property="IsSelected"
+                           Value="True">
+                    <Setter Property="Background"
+                            Value="LightBlue" />
+                  </Trigger>
+
+                </Style.Triggers>
+              </Style>
+            </DataGrid.ItemContainerStyle>
+
+            <DataGrid.Columns>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Name}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Name:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding ID}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient Number:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Birth}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Date of Birth:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Age}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Age:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Height}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Height (cm):'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+
+          <Rectangle StrokeThickness="3"
+                     RenderTransformOrigin="0.503,0.512"
+                     Margin="10,265,10.2,0"
+                     Height="31"
+                     VerticalAlignment="Top" />
+          <Label Content="Existing Patients"
+                 HorizontalAlignment="Left"
+                 Margin="10,10,0,0"
+                 FontSize="24" FontWeight='Bold'
+                 VerticalAlignment="Top" />
+          <Label Content="New Patient"
+                 HorizontalAlignment="Left"
+                 Margin="10,295,0,0"
+                 FontSize="24"
+                 VerticalAlignment="Top" FontWeight='Bold'/>
+          <TextBox Text="{Binding STname}"
+                   Margin="111,337,0,0"
+                   Height="23"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="127" />
+          <TextBox Text="{Binding STheight}"
+                   Margin="111,419,0,0"
+                   Height="23"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="127" />
+
+          <Button Content='Create Patient'
+                  VerticalAlignment='Top'
+                  Height='65'
+                  Command='{Binding Newpat}'
+                  Margin="329,355,0,0"
+                  HorizontalAlignment="Left"
+                  Width="110" />
+          <Button Content='Load Patient Data'
+                  HorizontalAlignment='Left'
+                  VerticalAlignment='Top'
+                  Width='110'
+                  Height='65'
+                  Command='{Binding Loadpat}'
+                  Margin="545,68,0,0" />
+          <Button Content='Clear Patient Data'
+                  HorizontalAlignment='Left'
+                  VerticalAlignment='Top'
+                  Width='110'
+                  Height='65'
+                  Command='{Binding Clearpat}'
+                  Margin="545,163,0,0" />
+          <Label Content="Name:"
+                 HorizontalAlignment="Left"
+                 Margin="24,337,0,0"
+                 Width="45"
+                 Height="23"
+                 VerticalAlignment="Top" />
+          <Label Content="Date of Birth:"
+                 HorizontalAlignment="Left"
+                 Margin="24,374,0,0"
+                 Width="113"
+                 Height="23"
+                 VerticalAlignment="Top" />
+          <Label Content="Height (cm):"
+                 HorizontalAlignment="Left"
+                 Margin="24,419,0,0"
+                 Width="113"
+                 Height="44"
+                 VerticalAlignment="Top" />
+          <DatePicker SelectedDate="{Binding 
+                        Path=STbirth,
+                        Mode=TwoWay,
+                        TargetNullValue={x:Static System:DateTime.Now}}"
+                      HorizontalAlignment="Left"
+                      Margin="111,375,0,0"
+                      VerticalAlignment="Top"
+                      Width="127" />
+        </Grid>
+      </TabItem>
+
+      <TabItem Name='Testing'
                Header='Testing'
                FocusManager.FocusedElement='{Binding ElementName=TestingTabGrid}'
                Height='22'
                VerticalAlignment='Bottom'>
 
-                <Grid x:Name='TestingTabGrid'>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height='Auto' />
-                        <RowDefinition Height='*' />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width='*' />
-                        <ColumnDefinition Width='*' />
-                    </Grid.ColumnDefinitions>
+        <Grid x:Name='TestingTabGrid'>
+          <Grid.RowDefinitions>
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='*' />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='*' />
+            <ColumnDefinition Width='*' />
+          </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column='0'
+          <TextBlock Grid.Column='0'
                      Grid.Row='0'
                      Text='Pressure Sensor Data'
                      HorizontalAlignment='Center'
                      VerticalAlignment='Center'
+                     FontSize="24"
                      FontWeight='Bold' />
 
-                    <Grid x:Name='PressureMatSensorData'
+          <Grid x:Name='PressureMatSensorData'
                 Grid.Column='0'
                 Grid.Row='2'
                 Margin='20,0,20,20'
                 Background='Black'>
 
-                        <DataGrid x:Name='PressureSensorDataGrid'
+            <DataGrid x:Name='PressureSensorDataGrid'
                       Margin='5,1,5,9'
                       AutoGenerateColumns='False'
                       CanUserResizeColumns='False'
                       CanUserSortColumns='False'
                       ItemsSource='{Binding FilteredPressureSensorVoltageValues}'
-                      MinRowHeight='69'
+                      MinRowHeight='65.5'
                       CanUserResizeRows='False'
                       CanUserDeleteRows='False'
                       CanUserAddRows='False'
                       AreRowDetailsFrozen='True'
-                      IsReadOnly='False'>
+                      IsReadOnly='False'
+                      RowHeaderWidth='0'>
 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Width='*'
+              <DataGrid.Columns>
+                <DataGridTextColumn Width='*'
                                     Binding='{Binding SelectedRow}'
                                     TextBlock.FontWeight='Bold'
                                     TextBlock.TextAlignment='Center'>
-                                </DataGridTextColumn>
+                </DataGridTextColumn>
 
-                                <DataGridTextColumn Header='A'
+                <DataGridTextColumn Header='A'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[0]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[0],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
 
-                                </DataGridTextColumn>
+                </DataGridTextColumn>
 
-                                <DataGridTextColumn Header='B'
+                <DataGridTextColumn Header='B'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[1]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[1],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='C'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='C'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[2]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[2],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='D'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='D'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[3]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[3],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='E'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='E'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[4]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[4],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='F'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='F'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[5]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[5],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='G'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='G'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[6]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[6],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                                <DataGridTextColumn Header='H'
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header='H'
                                     Width='*'
                                     Binding='{Binding PressureSensorData[7]}'>
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType='{x:Type TextBlock}'>
-                                            <Setter Property='Background'
+                  <DataGridTextColumn.ElementStyle>
+                    <Style TargetType='{x:Type TextBlock}'>
+                      <Setter Property='Background'
                               Value='{Binding PressureSensorData[7],Converter= {StaticResource NumberToBrushConverter}}' />
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                    <Button Content='Test NeuroMat'
-                  HorizontalAlignment='Left'
-                  VerticalAlignment='Top'
-                  Width='110'
-                  Height='65' 
-                  Grid.Column='1'
-                  Grid.Row='1'
-                  Command='{Binding TestArduinoCode}'>
-                    </Button>
-                    <Button Content='Test Dummy NeuroMat'
-                  HorizontalAlignment='Left'
-                  VerticalAlignment='Top'
-                  Width='110'
-                  Height='65'
-                  Grid.Column='1'
-                  Grid.Row='1'
-                  Command='{Binding TestDummyArduinoCode}'
-                  Margin='0,102,0,0'>
-                    </Button>
+                    </Style>
+                  </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+              </DataGrid.Columns>
+            </DataGrid>
+          </Grid>
 
-                </Grid>
-            </TabItem>
+          <DataGrid Grid.Row='0'
+                    Grid.Column='1'
+                    AutoGenerateColumns='False '
+                    ItemsSource='{Binding SelectedPatientLoaded}'
+                    CanUserAddRows='False'
+                    CanUserResizeRows='False'
+                    HorizontalAlignment='Right'
+                    HorizontalContentAlignment='Left'
+                    Margin='0,0,10,0'
+                    RowHeaderWidth='0'
+                    FontSize='16'>
 
-            <TabItem Name='TestResults'
+            <DataGrid.Columns>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Name}'
+                                  Width='Auto'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient Name:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding ID}'
+                                  Width='Auto'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient ID:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+          <TextBox Grid.Row='0'
+                   Grid.Column='1'
+                   Margin='10,0,223,0'
+                   Text='{Binding EnableUiParameters.StatusUpdate, Mode=OneWay}'
+                   IsReadOnly='True'>
+
+          </TextBox>
+          <Grid x:Name='ResultsButtonGrid'
+                Grid.Column='1'
+                Grid.Row='2'>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width='*' />
+              <ColumnDefinition Width='*' />
+              <ColumnDefinition Width='*' />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height='Auto' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='Auto' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.1*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='Auto' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.1*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='20' />
+            </Grid.RowDefinitions>
+
+            <Rectangle StrokeThickness="3"
+                       Grid.Row='3'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+
+            <TextBlock Grid.Column='0'
+                       Grid.Row='0'
+                       FontSize="24"
+                       Text='Body Pressure Mapping'
+                       HorizontalAlignment='Left'
+                       VerticalAlignment='Center'
+                       FontWeight='Bold'
+                       Grid.ColumnSpan='2'
+                       Margin='10,0,0,0' />
+
+            <Button Content='Calibrate Pressure Sensors'
+                    Margin='10,20,70,20'
+                    Grid.Column='0'
+                    Grid.Row='1'
+                    Command='{Binding CalibratePressureSensors}'>
+            </Button>
+
+            <Button Content='Start Pressure Mapping'
+                    Margin='10,20,70,20'
+                    Grid.Column='0'
+                    Grid.Row='2'
+                    Command='{Binding StartPressureMapping}'>
+            </Button>
+
+            <Button Content='Load Sample Pressure Data'
+                    Margin='10,20,70,20'
+                    Grid.Column='1'
+                    Grid.Row='2'
+                    Command='{Binding LoadSamplePressureSensorData}'>
+            </Button>
+
+            <TextBlock Grid.Column='0'
+                       Grid.Row='4'
+                       FontSize="24"
+                       Text='Nerve Conduction Testing'
+                       HorizontalAlignment='Left'
+                       VerticalAlignment='Center'
+                       FontWeight='Bold'
+                       Grid.ColumnSpan='2'
+                       Margin='10,0,0,0' />
+
+            <Button Content='Start NCV Test'
+                    Margin='10,20,70,20'
+                    Grid.Column='0'
+                    Grid.Row='6'
+                    Command='{Binding PerformNCVSampleTest}'>
+            </Button>
+
+            <Border Grid.Row='5'
+                    Grid.Column='0'
+                    Grid.ColumnSpan='3'
+                    Margin='10,10,10,10'
+                    BorderBrush='Black'
+                    BorderThickness='2'>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='Auto' />
+                  <ColumnDefinition Width='*' />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height='*' />
+                  <RowDefinition Height='*' />
+                  <RowDefinition Height='*' />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column='0'
+                           Grid.Row='0'
+                           Text='Spinal Region:'
+                           FontSize='16'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+                <TextBlock Grid.Column='1'
+                           Grid.Row='0'
+                           Text='Vertebrae:'
+                           FontSize='16'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+                <TextBlock Grid.Column='3'
+                           Grid.Row='0'
+                           Text='Side:'
+                           FontSize='16'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+                <TextBlock Grid.Column='4'
+                           Grid.Row='0'
+                           FontSize='16'
+                           Text='NCV Results (m/s):'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+
+                <ComboBox Grid.Column='0'
+                          Grid.Row='1'
+                          Grid.RowSpan='2'
+                          HorizontalContentAlignment='Center'
+                          VerticalContentAlignment='Center'
+                          Margin='5,5,5,5'
+                          FontSize='16'>
+                  <ComboBoxItem IsSelected='True'
+                                Content='Cervical' />
+                  <ComboBoxItem Content='Thoracic' />
+                  <ComboBoxItem Content='Lumbar' />
+                  <ComboBoxItem Content='Sacral' />
+                </ComboBox>
+
+                <ComboBox Grid.Column='1'
+                          Grid.Row='1'
+                          Grid.RowSpan='2'
+                          HorizontalContentAlignment='Center'
+                          VerticalContentAlignment='Center'
+                          Margin='5,5,5,5'
+                          FontSize='16'>
+                  <ComboBoxItem IsSelected='True'
+                                Content='1' />
+                  <ComboBoxItem Content='2' />
+                  <ComboBoxItem Content='3' />
+                  <ComboBoxItem Content='4' />
+                  <ComboBoxItem Content='5' />
+                  <ComboBoxItem Content='6' />
+                  <ComboBoxItem Content='7' />
+                  <ComboBoxItem Content='8' />
+                  <ComboBoxItem Content='9' />
+                  <ComboBoxItem Content='10' />
+                  <ComboBoxItem Content='11' />
+                  <ComboBoxItem Content='12' />
+                </ComboBox>
+                <TextBlock Grid.Column='3'
+                           Grid.Row='1'
+                           Text='Left'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontSize='16' />
+                <TextBlock Grid.Column='3'
+                           Grid.Row='2'
+                           Text='Right'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontSize='16' />
+                <TextBlock Grid.Column='4'
+                           Grid.Row='1'
+                           Text='{Binding EnableUiParameters.LeftNCVTestResults }'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontSize='16' />
+                <TextBlock Grid.Column='4'
+                           Grid.Row='2'
+                           Text='{Binding EnableUiParameters.RightNCVTestResults }'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontSize='16' />
+              </Grid>
+            </Border>
+
+            <Rectangle Fill="DarkSlateBlue"
+                       Stroke="DarkSlateBlue"
+                       StrokeThickness="3"
+                       Grid.Row='8'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+
+            <TextBlock Grid.Column='0'
+                       Grid.Row='9'
+                       FontSize="24"
+                       Text='Real-Time Body Pressure Sensing'
+                       HorizontalAlignment='Left'
+                       VerticalAlignment='Center'
+                       FontWeight='Bold'
+                       Grid.ColumnSpan='2'
+                       Margin='10,0,0,0' />
+
+            <Button Content='Enable'
+                    Margin='10,20,70,20'
+                    Grid.Column='0'
+                    Grid.Row='10'
+                    Command='{Binding TurnOnDynamicPressureSensing}'>
+            </Button>
+
+            <Button Content='Disable'
+                    Margin='10,20,70,20'
+                    Grid.Column='1'
+                    Grid.Row='10'
+                    Command='{Binding TurnOffDynamicPressureSensing}'>
+            </Button>
+
+            <Rectangle StrokeThickness="3"
+                       Grid.Row='12'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+          </Grid>
+        </Grid>
+      </TabItem>
+
+      <TabItem Name='TestResults'
                Header='Test Results'
                FocusManager.FocusedElement='{Binding ElementName=ResultsTabGrid}'>
-                <Grid x:Name='ResultsTabGrid'>
-                    <Grid.ColumnDefinitions>
+        <Grid x:Name='TestiResultsGrid'>
+          <Grid.RowDefinitions>
+            <RowDefinition Height='88' />
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='44' />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='157*' />
+            <ColumnDefinition Width='185*' />
+            <ColumnDefinition Width='161*' />
+            <ColumnDefinition Width='251*' />
+          </Grid.ColumnDefinitions>
 
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </TabItem>
+          <TextBlock Grid.Column='0'
+                     Grid.Row='0'
+                     Text='Patient Test Results'
+                     HorizontalAlignment='Center'
+                     VerticalAlignment='Center'
+                     FontSize="24"
+                     FontWeight='Bold'
+                     Grid.ColumnSpan='3'
+                     Margin='143,24,142,34'
+                     Height='30'
+                     Width='218' />
 
-            <TabItem Name='PatientHistory'
-               Header='Patient History '
-               FocusManager.FocusedElement='{Binding ElementName=HistoryTabGrid}'>
-                <Grid x:Name='HistoryTabGrid'>
-                </Grid>
-            </TabItem>
+          <Image x:Name="HumanBody"
+                 Grid.Column='1'
+                 HorizontalAlignment='Center'
+                 VerticalAlignment='Center'
+                 Visibility='Visible'
+                 Source='/NeuroMat_Application;component/HumanBodyCropped.jpg'
+                 Margin='10,0,10,35'
+                 Grid.RowSpan='2'
+                 Grid.Row='1' />
+
+          <TextBlock Grid.Column='0'
+                     Grid.Row='1'
+                     Text='Left:'
+                     HorizontalAlignment='Right'
+                     VerticalAlignment='Center'
+                     FontSize="16"
+                     FontWeight='Bold' />
+          <TextBlock Grid.Column='2'
+                     Grid.Row='1'
+                     Text='Right:'
+                     HorizontalAlignment='Left'
+                     VerticalAlignment='Center'
+                     FontSize="16"
+                     FontWeight='Bold' />
+
+          <DataGrid Grid.Column='0'
+                    Grid.Row='2'
+                    Grid.RowSpan='3'
+                    Margin='0,4,0,0'
+                    HorizontalAlignment='Right'
+                    VerticalAlignment='Top'
+                    ItemsSource='{Binding LeftNCVTestResults}'
+                    RowHeaderWidth='0'
+                    MinRowHeight='27'
+                    AutoGenerateColumns='False'
+                    CanUserAddRows='False'
+                    CanUserDeleteRows='False'
+                    CanUserReorderColumns='False'
+                    CanUserResizeRows='False'
+                    CanUserSortColumns='False'
+                    CanUserResizeColumns='False'>
+            <DataGrid.Columns>
+              <DataGridTextColumn TextBlock.TextAlignment='Center'
+                                  Binding='{Binding Name}'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Vertebrae:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn TextBlock.TextAlignment='Center'
+                                  Binding='{Binding NcvValue}'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='NCV (m/s):'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+
+          <DataGrid Grid.Column='2'
+                    Grid.Row='2'
+                    Margin='0,4,0,0'
+                    HorizontalAlignment='Left'
+                    VerticalAlignment='Top'
+                    ItemsSource='{Binding RightNCVTestResults}'
+                    RowHeaderWidth='0'
+                    MinRowHeight='27'
+                    AutoGenerateColumns='False'
+                    CanUserAddRows='False'
+                    CanUserDeleteRows='False'
+                    CanUserReorderColumns='False'
+                    CanUserResizeRows='False'
+                    CanUserSortColumns='False'
+                    CanUserResizeColumns='False'
+                    Grid.RowSpan='3'>
+            <DataGrid.Columns>
+              <DataGridTextColumn TextBlock.TextAlignment='Center'
+                                  Binding='{Binding Name}'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Vertebrae:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn TextBlock.TextAlignment='Center'
+                                  Binding='{Binding NcvValue}'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='NCV (m/s):'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+
+          <DataGrid Grid.Row='0'
+                    Grid.Column='3'
+                    AutoGenerateColumns='False '
+                    ItemsSource='{Binding SelectedPatientLoaded}'
+                    CanUserAddRows='False'
+                    CanUserResizeRows='False'
+                    HorizontalAlignment='Right'
+                    VerticalAlignment='Top'
+                    HorizontalContentAlignment='Left'
+                    Margin='0,0,10,34'
+                    RowHeaderWidth='0'
+                    FontSize='16'
+                    Grid.RowSpan='2'>
+
+            <DataGrid.Columns>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Name}'
+                                  Width='Auto'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient Name:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding ID}'
+                                  Width='Auto'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient ID:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+          <TextBox Grid.Row='0'
+                   Grid.Column='3'
+                   Margin='10,0,223,34'
+                   Text='{Binding EnableUiParameters.StatusUpdate, Mode=OneWay}'
+                   IsReadOnly='True'
+                   Grid.RowSpan='2'>
+
+          </TextBox>
+          <Grid x:Name='ResultsButtonGrid2'
+                Grid.Column='3'
+                Margin='0,10,0,0'
+                Grid.RowSpan='2'
+                Grid.Row='2'>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width='*' />
+              <ColumnDefinition Width='*' />
+              <ColumnDefinition Width='*' />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height='Auto' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.8*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='0.2*' />
+              <RowDefinition Height='0.05*' />
+              <RowDefinition Height='20' />
+            </Grid.RowDefinitions>
+
+            <Rectangle StrokeThickness="3"
+                       Grid.Row='2'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+
+            <TextBlock Grid.Column='0'
+                       Grid.Row='0'
+                       FontSize="24"
+                       Text='Test Results Control Box:'
+                       HorizontalAlignment='Left'
+                       VerticalAlignment='Center'
+                       FontWeight='Bold'
+                       Grid.ColumnSpan='2'
+                       Margin='10,0,0,0' />
+
+            <Border Grid.Row='1'
+                    Grid.Column='0'
+                    Grid.ColumnSpan='3'
+                    Margin='10,10,10,10'
+                    BorderBrush='Black'
+                    BorderThickness='2'>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='*' />
+                  <ColumnDefinition Width='*' />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height='*' />
+                  <RowDefinition Height='*' />
+                  <RowDefinition Height='*' />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column='0'
+                           Grid.Row='0'
+                           Text='Spinal Region:'
+                           FontSize='16'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+                <TextBlock Grid.Column='1'
+                           Grid.Row='0'
+                           Text='Vertebrae:'
+                           FontSize='16'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Center'
+                           TextAlignment='Center'
+                           TextWrapping='Wrap'
+                           FontWeight='Bold' />
+
+                <ComboBox Grid.Column='0'
+                          Grid.Row='1'
+                          Grid.RowSpan='2'
+                          HorizontalContentAlignment='Center'
+                          VerticalContentAlignment='Center'
+                          Margin='5,5,5,5'
+                          FontSize='16'>
+                  <ComboBoxItem IsSelected='True'
+                                Content='Cervical' />
+                  <ComboBoxItem Content='Thoracic' />
+                  <ComboBoxItem Content='Lumbar' />
+                  <ComboBoxItem Content='Sacral' />
+                </ComboBox>
+
+                <ComboBox Grid.Column='1'
+                          Grid.Row='1'
+                          Grid.RowSpan='2'
+                          HorizontalContentAlignment='Center'
+                          VerticalContentAlignment='Center'
+                          Margin='5,5,5,5'
+                          FontSize='16'>
+                  <ComboBoxItem IsSelected='True'
+                                Content='1' />
+                  <ComboBoxItem Content='2' />
+                  <ComboBoxItem Content='3' />
+                  <ComboBoxItem Content='4' />
+                  <ComboBoxItem Content='5' />
+                  <ComboBoxItem Content='6' />
+                  <ComboBoxItem Content='7' />
+                  <ComboBoxItem Content='8' />
+                  <ComboBoxItem Content='9' />
+                  <ComboBoxItem Content='10' />
+                  <ComboBoxItem Content='11' />
+                  <ComboBoxItem Content='12' />
+                </ComboBox>
+
+                <Button Content='Clear'
+                        Grid.Column='2'
+                        Grid.Row='1'
+                        Grid.RowSpan='2'
+                        HorizontalContentAlignment='Center'
+                        VerticalContentAlignment='Center'
+                        Margin='5,5,5,5'
+                        FontSize='16'
+                        Command='{Binding OpenPrompt}'/>
+
+                <Button Content='Save'
+                        Grid.Column='3'
+                        Grid.Row='1'
+                        Grid.RowSpan='2'
+                        HorizontalContentAlignment='Center'
+                        VerticalContentAlignment='Center'
+                        Margin='5,5,5,5'
+                        FontSize='16'
+                        Command='{Binding OpenPrompt}' />
+
+              </Grid>
+            </Border>
+
+            <Rectangle Fill="DarkSlateBlue"
+                       Stroke="DarkSlateBlue"
+                       StrokeThickness="3"
+                       Grid.Row='7'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+
+            <Button Content='Clear All'
+                    Margin='10,20,70,20'
+                    Grid.Column='0'
+                    Grid.Row='6'
+                    Command='{Binding OpenPrompt}'>
+            </Button>
+
+            <Button Content='Save All'
+                    Margin='10,20,70,20'
+                    Grid.Column='1'
+                    Grid.Row='6'
+                    Command='{Binding OpenPrompt}'>
+            </Button>
 
 
-        </TabControl>
+            <Rectangle StrokeThickness="3"
+                       Grid.Row='5'
+                       Grid.Column='0'
+                       Grid.ColumnSpan='3'
+                       RenderTransformOrigin="0.503,0.512"
+                       VerticalAlignment="Stretch" />
+          </Grid>
+        </Grid>
+      </TabItem>
 
-    </Grid>
+      <TabItem Name='PatientHistory'
+               Header='Patient History'>
+
+        <Grid x:Name='HistoryTabGrid'>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='2*' />
+            <ColumnDefinition Width='*' />
+          </Grid.ColumnDefinitions>
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='7*' />
+            <RowDefinition Height='2*' />
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='7*' />
+            <RowDefinition Height='2*' />
+            <RowDefinition Height='32*' />
+            <RowDefinition Height='2*' />
+            <RowDefinition Height='Auto' />
+            <RowDefinition Height='14*' />
+            <RowDefinition Height='7*' />
+          </Grid.RowDefinitions>
+
+          <Label Content="Patient History"
+                 Grid.Column='0'
+                 Grid.Row='0'
+                 FontSize="24"
+                 FontWeight='Bold'
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin='5,10,0,0'
+                 Height='42'
+                 Width='180' />
+
+          <Rectangle StrokeThickness="3"
+                     Grid.Row='2'
+                     Grid.Column='1'
+                     RenderTransformOrigin="0.503,0.512"
+                     VerticalAlignment="Stretch" />
+
+          <Label Content="Patient History Tools:"
+                 HorizontalAlignment="Left"
+                 FontSize="24"
+                 FontWeight='Bold'
+                 VerticalAlignment="Center"
+                 Grid.Column='1'
+                 Grid.Row='3' />
+          <Grid Grid.Row='4'
+                Grid.Column='1'
+                Margin='0,10,0,10'>
+            <Grid.RowDefinitions>
+              <RowDefinition Height='Auto' />
+              <RowDefinition Height='15*' />
+              <RowDefinition Height='15*' />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width='137' />
+              <ColumnDefinition Width='Auto' />
+              <ColumnDefinition Width='Auto' />
+              <ColumnDefinition Width='35*' />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column='0'
+                       Grid.Row='0'
+                       Text='Spinal Region:'
+                       FontSize='16'
+                       HorizontalAlignment='Left'
+                       VerticalAlignment='Bottom'
+                       TextAlignment='Center'
+                       TextWrapping='Wrap'
+                       FontWeight='Bold'
+                       Margin='10,0,0,0' />
+            <TextBlock Grid.Row='0'
+                       Grid.Column='1'
+                       Text='Vertebrae:'
+                       FontSize='16'
+                       HorizontalAlignment='Center'
+                       VerticalAlignment='Bottom'
+                       TextAlignment='Center'
+                       TextWrapping='Wrap'
+                       FontWeight='Bold' />
+
+            <ComboBox x:Name="Nervetype"
+                      Grid.Column='0'
+                      Grid.Row='1'
+                      Margin='10,0,10,0'
+                      HorizontalContentAlignment='Center'
+                      VerticalContentAlignment='Center'
+                      Grid.RowSpan='2'>
+              <ComboBoxItem IsSelected="True"
+                            Content="Cervical" />
+              <ComboBoxItem Content="Thoracic" />
+              <ComboBoxItem Content="Lumbar" />
+              <ComboBoxItem Content="Sacral" />
+            </ComboBox>
+
+            <ComboBox x:Name="Nervenumber"
+                      Grid.Row='1'
+                      Grid.Column='1'
+                      HorizontalContentAlignment='Center'
+                      VerticalContentAlignment='Center'
+                      Grid.RowSpan='2'>
+              <ComboBoxItem IsSelected="True"
+                            Content="1" />
+              <ComboBoxItem Content="2" />
+              <ComboBoxItem Content="3" />
+              <ComboBoxItem Content="4" />
+              <ComboBoxItem Content="5" />
+              <ComboBoxItem Content="6" />
+              <ComboBoxItem Content="7" />
+              <ComboBoxItem Content="8" />
+              <ComboBoxItem Content="9" />
+              <ComboBoxItem Content="10" />
+              <ComboBoxItem Content="11" />
+              <ComboBoxItem Content="12" />
+            </ComboBox>
+
+            <CheckBox Content="Left Side"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Margin='10,0,10,0'
+                      Grid.Column='2'
+                      Grid.Row='1' />
+
+            <CheckBox Content="Right Side"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Margin='10,0,10,0'
+                      Grid.Column='2'
+                      Grid.Row='2' />
+
+            <Button Content='Load History'
+                    Click="Load_History"
+                    Grid.Row='1'
+                    Grid.Column='3'
+                    Grid.RowSpan='2'
+                    HorizontalAlignment='Left' />
+          </Grid>
+
+          <Border Grid.Row='2'
+                  Grid.Column='0'
+                  Grid.ColumnSpan='1'
+                  BorderBrush='Black'
+                  BorderThickness='2'
+                  Grid.RowSpan='8'
+                  Margin='10,0,0,0' />
+
+          <Image x:Name="C1"
+                 Grid.Row='2'
+                 Grid.Column='0'
+                 HorizontalAlignment='Center'
+                 VerticalAlignment='Center'
+                 Visibility='Hidden'
+                 Margin='0,10,0,10'
+                 Source='/NeuroMat_Application;component/C1image.png'
+                 Grid.RowSpan='8' />
+
+          <Image x:Name="T3"
+                 Grid.Row='2'
+                 Grid.Column='0'
+                 HorizontalAlignment='Center'
+                 VerticalAlignment='Center'
+                 Visibility='Hidden'
+                 Margin='0,10,0,10'
+                 Source='/NeuroMat_Application;component/T3image.png'
+                 Grid.RowSpan='8' />
+
+          <DataGrid ItemsSource="{Binding PatientDataList_1}"
+                    RowHeaderWidth="0"
+                    CanUserResizeColumns='False'
+                    AutoGenerateColumns="False"
+                    VerticalAlignment='Top'
+                    HorizontalAlignment="Left"
+                    Margin='10,0,0,0'
+                    CanUserReorderColumns="False"
+                    CanUserAddRows="False"
+                    Grid.Column='0'
+                    Grid.Row='1'>
+
+            <DataGrid.Columns>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Name}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Name:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding ID}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Patient Number:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Birth}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Date of Birth:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Age}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Age:'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+              <DataGridTextColumn IsReadOnly='True'
+                                  Binding='{Binding Height}'
+                                  Width='*'>
+                <DataGridTextColumn.Header>
+                  <TextBlock Text='Height (cm):'
+                             FontWeight='Bold' />
+                </DataGridTextColumn.Header>
+              </DataGridTextColumn>
+            </DataGrid.Columns>
+
+          </DataGrid>
+          <Rectangle StrokeThickness="3"
+                     Grid.Row='5'
+                     Grid.Column='2'
+                     RenderTransformOrigin="0.503,0.512"
+                     VerticalAlignment="Stretch" />
+          <Rectangle StrokeThickness="3"
+                     Grid.Row='7'
+                     Grid.Column='2'
+                     RenderTransformOrigin="0.503,0.512"
+                     VerticalAlignment="Stretch" />
+          <Label Content="Comments:"
+                 HorizontalAlignment="Left"
+                 FontSize="24"
+                 FontWeight='Bold'
+                 VerticalAlignment="Center"
+                 Grid.Column='1'
+                 Grid.Row='8' />
+
+          <TextBox Name="Comments"
+                   TextWrapping="Wrap"
+                   Text=""
+                   Grid.Column='1'
+                   Grid.Row='9'
+                   Margin='10,10,10,10' />
+          <Button Content='Save'
+                  HorizontalAlignment='Center'
+                  Grid.Column='1'
+                  Grid.Row='10'
+                  Margin='59,10,62,10'
+                  Width='130'
+                  Command='{Binding OpenPrompt}'/>
+        </Grid>
+
+      </TabItem>
+
+    </TabControl>
+
+  </Grid>
 </Window>
  

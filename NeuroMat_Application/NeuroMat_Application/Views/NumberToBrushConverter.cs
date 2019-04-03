@@ -16,7 +16,7 @@ namespace NeuroMat_Application.Views
         {
             var bc = new BrushConverter();
 
-            double upperForceLimit = 20;
+            double upperForceLimit = 22;
 
             double input = Math.Abs(double.Parse(value.ToString()));
             int equivalentBrushValue = (int)Math.Round(((Math.Min(1, input / upperForceLimit)) * 255), 0);

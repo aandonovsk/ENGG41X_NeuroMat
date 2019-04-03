@@ -65,3 +65,20 @@ C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csproj
 C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CopyComplete
 C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.dll
 C:\Users\zach\source\repos\Neuromat\ArduinoDriver\obj\Debug\ArduinoDriver.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\ArduinoDriver.dll.config
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\ArduinoDriver.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\ArduinoDriver.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\ArduinoUploader.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\IntelHexFormatReader.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\NLog.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\NLog.xml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\bin\Debug\RJCP.SerialPortStream.xml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.Properties.Resources.resources
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.GenerateResource.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CoreCompileInputs.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.csproj.CopyComplete
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\ArduinoDriver\obj\Debug\ArduinoDriver.csprojAssemblyReference.cache

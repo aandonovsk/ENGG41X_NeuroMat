@@ -40,7 +40,7 @@ namespace NeuroMat_Application.Model
         }
         public string Birth
         {
-            get { return _birth; }
+            get { return _birth.Remove(_birth.Length-11); }
             set
             {
                 _birth = value;

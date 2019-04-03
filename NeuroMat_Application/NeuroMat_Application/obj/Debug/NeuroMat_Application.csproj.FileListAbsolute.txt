@@ -56,3 +56,32 @@ C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\ob
 C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.CopyComplete
 C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.exe
 C:\Users\zach\source\repos\Neuromat\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.exe.config
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.exe
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\NeuroMat_Application.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoUploader.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\IntelHexFormatReader.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\Microsoft.Win32.Registry.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\NLog.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.dll
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\ArduinoDriver.dll.config
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\NLog.xml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.pdb
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\bin\Debug\RJCP.SerialPortStream.xml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csprojAssemblyReference.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\Views\MainWindow.g.cs
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\App.g.cs
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application_MarkupCompile.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application_MarkupCompile.lref
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\App.baml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\Views\MainWindow.baml
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.g.resources
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.Properties.Resources.resources
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.GenerateResource.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.CoreCompileInputs.cache
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.csproj.CopyComplete
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.exe
+C:\School\ENGG4100\Final Software Design\NeuroMatApp\NeuroMat_Application\NeuroMat_Application\obj\Debug\NeuroMat_Application.pdb
